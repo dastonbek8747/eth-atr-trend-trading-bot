@@ -161,11 +161,11 @@ class ATRTrendPullbackBot:
         if current['ema_20'] <= current['ema_50']:
             return False
 
-        # 2. PULLBACK: Narx EMA 20 da pastda
-        if current['close'] >= current['ema_20']:
+        # 2. PULLBACK: Sham pastki soyasi EMA 20 ga tegdi (close emas!)
+        if current['low'] >= current['ema_20']:
             return False
 
-        # 3. CANDLE: Pastki soya + yopilish EMA 20 ustida
+        # 3. CANDLE: Pastki soya + yopilish EMA 20 ustida (rejection)
         if not self.has_lower_wick_buy(current):
             return False
         if current['close'] <= current['ema_20']:
@@ -201,11 +201,11 @@ class ATRTrendPullbackBot:
         if current['ema_20'] >= current['ema_50']:
             return False
 
-        # 2. PULLBACK: Narx EMA 20 da yuqorida
-        if current['close'] <= current['ema_20']:
+        # 2. PULLBACK: Sham yuqori soyasi EMA 20 ga tegdi (close emas!)
+        if current['high'] <= current['ema_20']:
             return False
 
-        # 3. CANDLE: Yuqori soya + yopilish EMA 20 ostida
+        # 3. CANDLE: Yuqori soya + yopilish EMA 20 ostida (rejection)
         if not self.has_upper_wick_sell(current):
             return False
         if current['close'] >= current['ema_20']:
