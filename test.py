@@ -1,8 +1,13 @@
+import os
+
 import ccxt
+from dotenv import load_dotenv
+
+load_dotenv()
 
 exchange = ccxt.binance({
-    'apiKey': 'hVny8GTa0xkURqVsP0MsCDo9e0BgToTfHpmFn8kX3JfycBliJxpiJtZkW7IcqjV7',
-    'secret': '6fLVTFuYrKDYccyzd5jhKPyzsReTwvjpOAOB0IxGXsJuRXsjIhqqpv2eMaPUdecd',
+    'apiKey': os.getenv('BINANCE_API_KEY', ''),
+    'secret': os.getenv('BINANCE_API_SECRET', ''),
     'enableRateLimit': True,
 })
 exchange.set_sandbox_mode(True)
